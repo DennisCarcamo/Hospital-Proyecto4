@@ -10,7 +10,7 @@ public class ComplejosH {
     //capa=capacidad
     String nombre, direccion, rankinDeEmergencias;
     int capaAmbulancias, capaParamedicos;
-    ArrayList Ambulancias, Paramedicos;
+    ArrayList Ambulancias = new ArrayList(), Paramedicos = new ArrayList();
 
     public ComplejosH(String nombre, String direccion, String rankinDeEmergencias, int capaAmbulancias, int capaParamedicos) {
         this.nombre = nombre;
@@ -40,6 +40,22 @@ public class ComplejosH {
         return rankinDeEmergencias;
     }
 
+    public ArrayList getAmbulancias() {
+        return Ambulancias;
+    }
+
+    public void setAmbulancias(ArrayList Ambulancias) {
+        this.Ambulancias = Ambulancias;
+    }
+
+    public ArrayList getParamedicos() {
+        return Paramedicos;
+    }
+
+    public void setParamedicos(ArrayList Paramedicos) {
+        this.Paramedicos = Paramedicos;
+    }
+
     public void setRankinDeEmergencias(String rankinDeEmergencias) {
         this.rankinDeEmergencias = rankinDeEmergencias;
     }
@@ -62,7 +78,7 @@ public class ComplejosH {
 
     @Override
     public String toString() {
-        return "ComplejosH{" + "nombre=" + nombre + '}';
+        return nombre;
     }
 
 }

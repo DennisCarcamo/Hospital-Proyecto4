@@ -1,5 +1,10 @@
 
+import java.awt.Dialog;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -70,9 +75,59 @@ public class Principal extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
+        jp_Emergencnia = new javax.swing.JFrame();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        cb_ranquingEmergencia = new javax.swing.JComboBox<>();
+        cb_LugarOrigen = new javax.swing.JComboBox<>();
+        jLabel21 = new javax.swing.JLabel();
+        jButton8 = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        jp_opciones = new javax.swing.JFrame();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jd_transferirParamedico = new javax.swing.JDialog();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        cb_complejoactualtranferirparamedico = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jt_tablaParamedicos = new javax.swing.JTable();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        cb_complejoatranferir = new javax.swing.JComboBox<>();
+        jButton7 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jd_eliminarcomplejo = new javax.swing.JDialog();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        cb_eliminarcomplejo = new javax.swing.JComboBox<>();
+        jButton15 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
+        jd_reasignarAmbulancia = new javax.swing.JDialog();
+        jLabel29 = new javax.swing.JLabel();
+        jButton17 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
+        jLabel30 = new javax.swing.JLabel();
+        cb_complejoatranferirAmbula = new javax.swing.JComboBox<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jt_tablaAmbulancia = new javax.swing.JTable();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        cb_complejoactualtranferirambulancia = new javax.swing.JComboBox<>();
+        Mapa = new javax.swing.JDialog();
+        jLabel33 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jLabel22 = new javax.swing.JLabel();
 
         tf_nombreHopsitalario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,32 +168,31 @@ public class Principal extends javax.swing.JFrame {
             jp_ComplejoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jp_ComplejoLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jp_ComplejoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addGroup(jp_ComplejoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jp_ComplejoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jp_ComplejoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addGroup(jp_ComplejoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jp_ComplejoLayout.createSequentialGroup()
-                                .addComponent(tf_nombreHopsitalario, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(43, 43, 43)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_CapacidadParamedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1)
-                            .addGroup(jp_ComplejoLayout.createSequentialGroup()
-                                .addComponent(cb_RankingHospitalario, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_CapacidadAmbulancias, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(tf_nombreHopsitalario, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_CapacidadParamedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1)
                     .addGroup(jp_ComplejoLayout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addComponent(jButton4)))
+                        .addComponent(cb_RankingHospitalario, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_CapacidadAmbulancias, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(58, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_ComplejoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton4)
+                .addGap(207, 207, 207))
         );
         jp_ComplejoLayout.setVerticalGroup(
             jp_ComplejoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,7 +381,65 @@ public class Principal extends javax.swing.JFrame {
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel18.setText("Lugar de Origen");
+
+        jLabel19.setText("Gravedad");
+
+        cb_ranquingEmergencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "C", "D" }));
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText("Emergencias");
+
+        jButton8.setText("Aceptar");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jp_EmergencniaLayout = new javax.swing.GroupLayout(jp_Emergencnia.getContentPane());
+        jp_Emergencnia.getContentPane().setLayout(jp_EmergencniaLayout);
+        jp_EmergencniaLayout.setHorizontalGroup(
+            jp_EmergencniaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jp_EmergencniaLayout.createSequentialGroup()
+                .addGroup(jp_EmergencniaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_EmergencniaLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(jp_EmergencniaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel18)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_EmergencniaLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel19)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jp_EmergencniaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cb_ranquingEmergencia, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_LugarOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jp_EmergencniaLayout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(jButton8)))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        jp_EmergencniaLayout.setVerticalGroup(
+            jp_EmergencniaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_EmergencniaLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel21)
+                .addGap(35, 35, 35)
+                .addGroup(jp_EmergencniaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(cb_LugarOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jp_EmergencniaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(cb_ranquingEmergencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton8)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        jLabel20.setText("jLabel20");
 
         jButton1.setText("Crear Complejo");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -341,12 +453,77 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jButton13.setText("Eliminar Complejo");
+        jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton13MouseClicked(evt);
+            }
+        });
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(77, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jButton13)
+                .addContainerGap(54, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Complejos Hospitalarios", jPanel1);
+
         jButton2.setText("Agregar Paramedico");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
             }
         });
+
+        jButton11.setText("Tranferir Paramedico");
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton11MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton11)
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Paramedicos", jPanel2);
 
         jButton3.setText("Agregar ambulancia");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -355,28 +532,363 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jButton14.setText("Reasignar ambulancia");
+        jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton14MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jButton3)
+                .addGap(18, 18, 18)
+                .addComponent(jButton14)
+                .addContainerGap(50, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Ambulancias", jPanel3);
+
+        javax.swing.GroupLayout jp_opcionesLayout = new javax.swing.GroupLayout(jp_opciones.getContentPane());
+        jp_opciones.getContentPane().setLayout(jp_opcionesLayout);
+        jp_opcionesLayout.setHorizontalGroup(
+            jp_opcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1)
+        );
+        jp_opcionesLayout.setVerticalGroup(
+            jp_opcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1)
+        );
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("Tranferir Paramedicos");
+
+        jLabel24.setText("Complejo Actual");
+
+        cb_complejoactualtranferirparamedico.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_complejoactualtranferirparamedicoItemStateChanged(evt);
+            }
+        });
+
+        jt_tablaParamedicos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Ranking"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jt_tablaParamedicos);
+
+        jLabel25.setText("Paramedicos Asignados");
+
+        jLabel26.setText("Tranferir al Complejo:");
+
+        jButton7.setText("Aceptar");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+
+        jButton12.setText("Cancelar");
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton12MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_transferirParamedicoLayout = new javax.swing.GroupLayout(jd_transferirParamedico.getContentPane());
+        jd_transferirParamedico.getContentPane().setLayout(jd_transferirParamedicoLayout);
+        jd_transferirParamedicoLayout.setHorizontalGroup(
+            jd_transferirParamedicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jd_transferirParamedicoLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jd_transferirParamedicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel24)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel26))
+                .addGap(18, 18, 18)
+                .addGroup(jd_transferirParamedicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cb_complejoactualtranferirparamedico, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_complejoatranferir, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_transferirParamedicoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton12)
+                .addGap(146, 146, 146))
+        );
+        jd_transferirParamedicoLayout.setVerticalGroup(
+            jd_transferirParamedicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_transferirParamedicoLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel23)
+                .addGap(24, 24, 24)
+                .addGroup(jd_transferirParamedicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(cb_complejoactualtranferirparamedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(jd_transferirParamedicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel25)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_transferirParamedicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_complejoatranferir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel26))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGroup(jd_transferirParamedicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton7)
+                    .addComponent(jButton12))
+                .addContainerGap())
+        );
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel27.setText("Eliminar Complejo");
+
+        jLabel28.setText("Complejo");
+
+        jButton15.setText("Eliminar");
+        jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton15MouseClicked(evt);
+            }
+        });
+
+        jButton16.setText("Cancelar");
+
+        javax.swing.GroupLayout jd_eliminarcomplejoLayout = new javax.swing.GroupLayout(jd_eliminarcomplejo.getContentPane());
+        jd_eliminarcomplejo.getContentPane().setLayout(jd_eliminarcomplejoLayout);
+        jd_eliminarcomplejoLayout.setHorizontalGroup(
+            jd_eliminarcomplejoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_eliminarcomplejoLayout.createSequentialGroup()
+                .addGroup(jd_eliminarcomplejoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_eliminarcomplejoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel28)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_eliminarcomplejo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_eliminarcomplejoLayout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(jButton15)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton16)))
+                .addContainerGap(43, Short.MAX_VALUE))
+            .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_eliminarcomplejoLayout.setVerticalGroup(
+            jd_eliminarcomplejoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_eliminarcomplejoLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel27)
+                .addGap(27, 27, 27)
+                .addGroup(jd_eliminarcomplejoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(cb_eliminarcomplejo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(jd_eliminarcomplejoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton15)
+                    .addComponent(jButton16))
+                .addGap(32, 32, 32))
+        );
+
+        jLabel29.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel29.setText("Reasignar Ambulancia");
+
+        jButton17.setText("Aceptar");
+        jButton17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton17MouseClicked(evt);
+            }
+        });
+
+        jButton18.setText("Cancelar");
+
+        jLabel30.setText("Tranferir al Complejo:");
+
+        jt_tablaAmbulancia.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Ranking"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(jt_tablaAmbulancia);
+
+        jLabel31.setText("Paramedicos Asignados");
+
+        jLabel32.setText("Complejo Actual");
+
+        cb_complejoactualtranferirambulancia.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_complejoactualtranferirambulanciaItemStateChanged(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_reasignarAmbulanciaLayout = new javax.swing.GroupLayout(jd_reasignarAmbulancia.getContentPane());
+        jd_reasignarAmbulancia.getContentPane().setLayout(jd_reasignarAmbulanciaLayout);
+        jd_reasignarAmbulanciaLayout.setHorizontalGroup(
+            jd_reasignarAmbulanciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jd_reasignarAmbulanciaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jd_reasignarAmbulanciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_reasignarAmbulanciaLayout.createSequentialGroup()
+                        .addGroup(jd_reasignarAmbulanciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel32)
+                            .addComponent(jLabel31)
+                            .addComponent(jLabel30))
+                        .addGap(18, 18, 18)
+                        .addGroup(jd_reasignarAmbulanciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cb_complejoactualtranferirambulancia, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_complejoatranferirAmbula, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_reasignarAmbulanciaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton18)
+                        .addGap(119, 119, 119)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jd_reasignarAmbulanciaLayout.setVerticalGroup(
+            jd_reasignarAmbulanciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_reasignarAmbulanciaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel29)
+                .addGap(30, 30, 30)
+                .addGroup(jd_reasignarAmbulanciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel32)
+                    .addComponent(cb_complejoactualtranferirambulancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(jd_reasignarAmbulanciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel31)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_reasignarAmbulanciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_complejoatranferirAmbula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(jd_reasignarAmbulanciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton17)
+                    .addComponent(jButton18))
+                .addGap(23, 23, 23))
+        );
+
+        jLabel33.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel33.setText("MAPA");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 347, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout MapaLayout = new javax.swing.GroupLayout(Mapa.getContentPane());
+        Mapa.getContentPane().setLayout(MapaLayout);
+        MapaLayout.setHorizontalGroup(
+            MapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
+            .addGroup(MapaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(21, 21, 21))
+        );
+        MapaLayout.setVerticalGroup(
+            MapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MapaLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButton9.setText("Mapa");
+
+        jButton10.setText("Opciones");
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+        });
+
+        jLabel22.setText("Menu Principal");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(55, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(85, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel22)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(101, 101, 101))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addContainerGap(64, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(jButton10)
+                .addGap(27, 27, 27)
+                .addComponent(jButton9)
+                .addGap(42, 42, 42))
         );
 
         pack();
@@ -406,8 +918,9 @@ public class Principal extends javax.swing.JFrame {
             rankinDeEmergencias = this.cb_RankingHospitalario.getSelectedItem().toString();
             capaAmbulancias = Integer.parseInt(this.tf_CapacidadAmbulancias.getText());
             capaParamedicos = Integer.parseInt(this.tf_CapacidadParamedicos.getText());
-            ComplejosH nuevocomplejo = new ComplejosH(nombre, direccion, rankinDeEmergencias, capaAmbulancias, capaParamedicos);
-
+            ComplejosH.add(new ComplejosH(nombre, direccion, rankinDeEmergencias, capaAmbulancias, capaParamedicos));
+            this.limpiarComplejosH();
+            JOptionPane.showMessageDialog(this.jp_Complejo, "Complejo Hospitalario Agregado Exiosamente");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this.jp_Complejo, "Algo Salio Mal, Verifique sus Datos", "ERROR", JOptionPane.WARNING_MESSAGE);
         }
@@ -417,6 +930,7 @@ public class Principal extends javax.swing.JFrame {
         limpiarParamedicos();
         this.jp_Paramedico.pack();
         this.jp_Paramedico.setLocationRelativeTo(this);
+        actualizarcomboboxeliminarcomplejo();
         this.jp_Paramedico.setVisible(true);
     }//GEN-LAST:event_jButton2MouseClicked
 
@@ -431,7 +945,10 @@ public class Principal extends javax.swing.JFrame {
             ID = Integer.parseInt(this.tf_IdParamedico.getText());
             asignado = (ComplejosH) this.cb_AsignaraParamedico.getSelectedItem();
             Paramedico nuevoParamedico = new Paramedico(nombre, ranking, ID, edad, asignado);
+            ((ComplejosH) ComplejosH.get(this.cb_AsignaraParamedico.getSelectedIndex())).getParamedicos().add(nuevoParamedico);
 
+            JOptionPane.showMessageDialog(this.jp_Complejo, "Paramedico Agregado Exitosamente");
+            this.limpiarParamedicos();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this.jp_Paramedico, "Algo Salio Mal, Verifique sus Datos", "ERROR", JOptionPane.WARNING_MESSAGE);
         }
@@ -439,6 +956,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         this.limpiarAmbulacias();
+        actualizarcomboboxettransferirAmbula();
         this.jp_Ambulancia.pack();
         this.jp_Ambulancia.setLocationRelativeTo(this);
         this.jp_Ambulancia.setVisible(true);
@@ -447,16 +965,199 @@ public class Principal extends javax.swing.JFrame {
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         int placa, year, VelociMaxima;
         ComplejosH complejohAsignado;
-        try {
-            placa = Integer.parseInt(this.tf_PlacaAmbulance.getText());
-            year = Integer.parseInt(this.tf_AnoAmbulancia.getText());
-            VelociMaxima = Integer.parseInt(this.tf_VelociMaxi.getText());
-            complejohAsignado = (ComplejosH) this.cb_AsignaraAmbulkance.getSelectedItem();
-            Ambulancia nuevaAmbulancia = new Ambulancia(placa, year, VelociMaxima, complejohAsignado);
-        } catch (Exception e) {
+        //  try {
+        placa = Integer.parseInt(this.tf_PlacaAmbulance.getText());
+        year = Integer.parseInt(this.tf_AnoAmbulancia.getText());
+        VelociMaxima = Integer.parseInt(this.tf_VelociMaxi.getText());
+        complejohAsignado = (ComplejosH) this.cb_AsignaraAmbulkance.getSelectedItem();
+        Ambulancia nuevaAmbulancia = new Ambulancia(placa, year, VelociMaxima, complejohAsignado);
+        ((ComplejosH) ComplejosH.get(this.cb_AsignaraAmbulkance.getSelectedIndex())).getAmbulancias().add(nuevaAmbulancia);
+        JOptionPane.showMessageDialog(this.jp_Complejo, "Ambulancia Agregado Exiosamente");
+        this.limpiarAmbulacias();
+        /* } catch (Exception e) {
             JOptionPane.showMessageDialog(this.jp_Ambulancia, "Algo Salio Mal, Verifique sus Datos", "ERROR", JOptionPane.WARNING_MESSAGE);
-        }
+        }*/
     }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        this.limpiarEmergencia();
+        this.jp_Emergencnia.pack();
+        this.jp_Emergencnia.setLocationRelativeTo(this);
+        this.jp_Emergencnia.setVisible(true);
+    }//GEN-LAST:event_jButton8MouseClicked
+
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+        this.jp_opciones.pack();
+        this.jp_opciones.setLocationRelativeTo(this);
+        this.jp_opciones.setVisible(true);
+    }//GEN-LAST:event_jButton10MouseClicked
+
+    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+        this.jd_transferirParamedico.pack();
+        this.jd_transferirParamedico.setModal(true);
+        actualizarcomboboxettransferirParamedico();
+        actualizarcomboboxettransferirParamedico2();
+        this.jd_transferirParamedico.setLocationRelativeTo(this.jp_Paramedico);
+        this.jd_transferirParamedico.setVisible(true);
+
+
+    }//GEN-LAST:event_jButton11MouseClicked
+    private void actualizarcomboboxettransferirParamedico() {
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < ComplejosH.size(); i++) {
+            modelo.addElement(ComplejosH.get(i));
+        }
+        this.cb_complejoactualtranferirparamedico.setModel(modelo);
+
+    }
+
+    private void actualizarcomboboxettransferirAmbula() {
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < ComplejosH.size(); i++) {
+            modelo.addElement(ComplejosH.get(i));
+        }
+
+        this.cb_AsignaraAmbulkance.setModel(modelo);
+    }
+
+    private void actualizarcomboboxettransferirParamedico2() {
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < ComplejosH.size(); i++) {
+            modelo.addElement(ComplejosH.get(i));
+        }
+
+        this.cb_complejoatranferir.setModel(modelo);
+
+    }
+    private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
+        this.jd_eliminarcomplejo.pack();
+        this.jd_eliminarcomplejo.setModal(true);
+        this.jd_eliminarcomplejo.setLocationRelativeTo(this.jp_Complejo);
+        actualizarcomboboxeliminarcomplejo();
+        this.jd_eliminarcomplejo.setVisible(true);
+    }//GEN-LAST:event_jButton13MouseClicked
+    private void actualizarcomboboxeliminarcomplejo() {
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < ComplejosH.size(); i++) {
+            modelo.addElement(ComplejosH.get(i));
+        }
+        this.cb_eliminarcomplejo.setModel(modelo);
+        this.cb_AsignaraParamedico.setModel(modelo);
+    }
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
+        this.jd_reasignarAmbulancia.pack();
+        this.jd_reasignarAmbulancia.setModal(true);
+        this.jd_reasignarAmbulancia.setLocationRelativeTo(this);
+        actualizarcombo1tranferirambulancia();
+        actualizarcombo1tranferirambulancia2();
+        this.jd_reasignarAmbulancia.setVisible(true);
+    }//GEN-LAST:event_jButton14MouseClicked
+
+    private void actualizarcombo1tranferirambulancia() {
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < ComplejosH.size(); i++) {
+            modelo.addElement(ComplejosH.get(i));
+        }
+
+        this.cb_complejoactualtranferirambulancia.setModel(modelo);
+    }
+
+    private void actualizarcombo1tranferirambulancia2() {
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < ComplejosH.size(); i++) {
+            modelo.addElement(ComplejosH.get(i));
+        }
+
+        this.cb_complejoatranferirAmbula.setModel(modelo);
+    }
+    private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
+        ComplejosH.remove(this.cb_eliminarcomplejo.getSelectedIndex());
+        actualizarcomboboxeliminarcomplejo();
+        JOptionPane.showMessageDialog(this, "Complejo Eliminado Exitosamente");
+    }//GEN-LAST:event_jButton15MouseClicked
+
+    private void cb_complejoactualtranferirparamedicoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_complejoactualtranferirparamedicoItemStateChanged
+        DefaultTableModel modelotabla = new DefaultTableModel();
+        Object datos[] = new Object[3];
+        modelotabla.addColumn("ID");
+        modelotabla.addColumn("Nombre");
+        modelotabla.addColumn("Ranking");
+        ComplejosH compltemp = (ComplejosH) ComplejosH.get(this.cb_complejoactualtranferirparamedico.getSelectedIndex());
+        for (int i = 0; i < compltemp.Paramedicos.size(); i++) {
+            datos[0] = ((Paramedico) compltemp.Paramedicos.get(i)).getID();
+            datos[1] = ((Paramedico) compltemp.Paramedicos.get(i)).getNombre();
+            datos[2] = ((Paramedico) compltemp.Paramedicos.get(i)).getRanking();
+            modelotabla.addRow(datos);
+        }
+        this.jt_tablaParamedicos.setModel(modelotabla);
+
+
+    }//GEN-LAST:event_cb_complejoactualtranferirparamedicoItemStateChanged
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        ComplejosH compltemporiginal = null, compltempamover = null;
+        for (int i = 0; i < 2; i++) {
+            if (i == 0) {
+                compltemporiginal = (ComplejosH) this.cb_complejoactualtranferirparamedico.getSelectedItem();
+            } else if (i == 1) {
+                compltempamover = (ComplejosH) this.cb_complejoatranferir.getSelectedItem();
+            }
+        }
+        compltempamover.Paramedicos.add(compltemporiginal.Paramedicos.get(this.jt_tablaParamedicos.getSelectedRow()));
+        compltemporiginal.Paramedicos.remove(this.jt_tablaParamedicos.getSelectedRow());
+        JOptionPane.showMessageDialog(this.jd_transferirParamedico, "Paramedico Tranferido Exitosamente");
+
+
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+        this.jd_transferirParamedico.setVisible(false);
+    }//GEN-LAST:event_jButton12MouseClicked
+
+    private void cb_complejoactualtranferirambulanciaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_complejoactualtranferirambulanciaItemStateChanged
+        DefaultTableModel modelotabla = new DefaultTableModel();
+        Object datos[] = new Object[3];
+        modelotabla.addColumn("Placa");
+        modelotabla.addColumn("Año");
+        modelotabla.addColumn("Velocida Maxima");
+        ComplejosH compltemp = (ComplejosH) ComplejosH.get(this.cb_complejoactualtranferirambulancia.getSelectedIndex());
+        for (int i = 0; i < compltemp.Ambulancias.size(); i++) {
+            datos[0] = ((Ambulancia) compltemp.Ambulancias.get(i)).getPlaca();
+            datos[1] = ((Ambulancia) compltemp.Ambulancias.get(i)).getYear();
+            datos[2] = ((Ambulancia) compltemp.Ambulancias.get(i)).getVelociMaxima();
+            modelotabla.addRow(datos);
+        }
+        this.jt_tablaAmbulancia.setModel(modelotabla);
+
+
+    }//GEN-LAST:event_cb_complejoactualtranferirambulanciaItemStateChanged
+
+    private void jButton17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton17MouseClicked
+        ComplejosH compltemporiginal = null, compltempamover = null;
+        for (int i = 0; i < 2; i++) {
+            if (i == 0) {
+                compltemporiginal = (ComplejosH) this.cb_complejoactualtranferirambulancia.getSelectedItem();
+            } else if (i == 1) {
+                compltempamover = (ComplejosH) this.cb_complejoatranferirAmbula.getSelectedItem();
+            }
+        }
+        compltempamover.Ambulancias.add(compltemporiginal.Ambulancias.get(this.jt_tablaAmbulancia.getSelectedRow()));
+        compltemporiginal.Ambulancias.remove(this.jt_tablaAmbulancia.getSelectedRow());
+        JOptionPane.showMessageDialog(this.jd_reasignarAmbulancia, "Ambulancia Tranferida Exitosamente");
+
+
+    }//GEN-LAST:event_jButton17MouseClicked
+
+    public void limpiarEmergencia() {
+        this.cb_LugarOrigen.setSelectedIndex(-1);
+        this.cb_ranquingEmergencia.setSelectedIndex(-1);
+    }
+
     public void limpiarComplejosH() {
         this.tf_nombreHopsitalario.setText("");
         this.tf_CapacidadAmbulancias.setText("");
@@ -491,7 +1192,7 @@ public class Principal extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -516,16 +1217,36 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog Mapa;
     private javax.swing.JComboBox<String> cb_AsignaraAmbulkance;
     private javax.swing.JComboBox<String> cb_AsignaraParamedico;
+    private javax.swing.JComboBox<String> cb_LugarOrigen;
     private javax.swing.JComboBox<String> cb_RankingHospitalario;
     private javax.swing.JComboBox<String> cb_RankingPAramedico;
+    private javax.swing.JComboBox<String> cb_complejoactualtranferirambulancia;
+    private javax.swing.JComboBox<String> cb_complejoactualtranferirparamedico;
+    private javax.swing.JComboBox<String> cb_complejoatranferir;
+    private javax.swing.JComboBox<String> cb_complejoatranferirAmbula;
+    private javax.swing.JComboBox<String> cb_eliminarcomplejo;
+    private javax.swing.JComboBox<String> cb_ranquingEmergencia;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -535,20 +1256,50 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JDialog jd_eliminarcomplejo;
+    private javax.swing.JDialog jd_reasignarAmbulancia;
+    private javax.swing.JDialog jd_transferirParamedico;
     private javax.swing.JFrame jp_Ambulancia;
     private javax.swing.JFrame jp_Complejo;
+    private javax.swing.JFrame jp_Emergencnia;
     private javax.swing.JFrame jp_Paramedico;
+    private javax.swing.JFrame jp_opciones;
+    private javax.swing.JTable jt_tablaAmbulancia;
+    private javax.swing.JTable jt_tablaParamedicos;
     private javax.swing.JTextArea ta_DireccionHospita;
     private javax.swing.JTextField tf_AnoAmbulancia;
     private javax.swing.JTextField tf_CapacidadAmbulancias;
@@ -560,4 +1311,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_nombreHopsitalario;
     private javax.swing.JTextField tf_nombreParamedico;
     // End of variables declaration//GEN-END:variables
+    ArrayList ComplejosH = new ArrayList();
+    ArrayList Ambulancia = new ArrayList();
+    ArrayList Paramedico = new ArrayList();
+
 }

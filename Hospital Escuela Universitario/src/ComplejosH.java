@@ -8,7 +8,6 @@ import scala.Serializable;
  */
 public class ComplejosH implements Serializable {
 
-    //capa=capacidad
     String nombre, direccion;
     Ranking rankinDeEmergencias;
     int capaAmbulancias, capaParamedicos;

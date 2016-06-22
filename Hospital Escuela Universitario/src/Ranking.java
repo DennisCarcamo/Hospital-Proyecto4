@@ -3,46 +3,44 @@ import scala.Serializable;
 
 public class Ranking implements Serializable {
 
-    private String name;
-    private int value;
+    private String nombre;
+    private int valor;
 
     public Ranking() {
     }
 
     public Ranking(String name) {
-        this.name = name;
+        this.nombre = name;
         if (name.equals("A")) {
-            value = 4;
+            valor = 4;
         } else if (name.equals("B")) {
-            value = 3;
+            valor = 3;
         } else if (name.equals("C")) {
-            value = 2;
+            valor = 2;
         } else if (name.equals("D")) {
-            value = 1;
+            valor = 1;
         }
     }
 
-    public String getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNombre(String name) {
+        this.nombre = name;
     }
 
-    public int getValue() {
-        return value;
+    public int getValor() {
+        return valor;
     }
 
-    public void setValue(int value) {
-        this.value = value;
+    public void setValor(int value) {
+        this.valor = value;
     }
 
     @Override
     public String toString() {
-        return  name ;
+        return nombre;
     }
-    
-    
 
 }

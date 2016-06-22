@@ -1,18 +1,18 @@
 
 import scala.Serializable;
 
-
 /**
  *
  * @author Dennis
  */
 public class Paramedico implements Serializable {
 
-    String nombre, ranking;
+    String nombre;
+    Ranking ranking;
     int ID, edad;
     ComplejosH asignado;
 
-    public Paramedico(String nombre, String ranking, int ID, int edad, ComplejosH asignado) {
+    public Paramedico(String nombre, Ranking ranking, int ID, int edad, ComplejosH asignado) {
         this.nombre = nombre;
         this.ranking = ranking;
         this.ID = ID;
@@ -28,11 +28,11 @@ public class Paramedico implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getRanking() {
+    public Ranking getRanking() {
         return ranking;
     }
 
-    public void setRanking(String ranking) {
+    public void setRanking(Ranking ranking) {
         this.ranking = ranking;
     }
 

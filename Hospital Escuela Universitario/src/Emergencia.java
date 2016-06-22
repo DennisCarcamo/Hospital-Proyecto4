@@ -1,34 +1,24 @@
 
-import scala.Serializable;
+import java.io.Serializable;
 
-
-/**
- *
- * @author Dennis
- */
 public class Emergencia implements Serializable {
 
-    String Lugar, Ranking;
+    private Ranking ranking;
 
-    public Emergencia(String Lugar, String Ranking) {
-        this.Lugar = Lugar;
-        this.Ranking = Ranking;
+    public Emergencia(Ranking ranking) {
+        this.ranking = ranking;
     }
 
-    public String getLugar() {
-        return Lugar;
+    public Ranking getRanking() {
+        return ranking;
     }
 
-    public void setLugar(String Lugar) {
-        this.Lugar = Lugar;
+    public void setRanking(Ranking ranking) {
+        this.ranking = ranking;
     }
 
-    public String getRanking() {
-        return Ranking;
+    @Override
+    public String toString() {
+        return ranking.toString();
     }
-
-    public void setRanking(String Ranking) {
-        this.Ranking = Ranking;
-    }
-
 }

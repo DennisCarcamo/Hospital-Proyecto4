@@ -6,14 +6,15 @@ import scala.Serializable;
  *
  * @author Dennis
  */
-public class ComplejosH implements Serializable{
+public class ComplejosH implements Serializable {
 
     //capa=capacidad
-    String nombre, direccion, rankinDeEmergencias;
+    String nombre, direccion;
+    Ranking rankinDeEmergencias;
     int capaAmbulancias, capaParamedicos;
     ArrayList Ambulancias = new ArrayList(), Paramedicos = new ArrayList();
 
-    public ComplejosH(String nombre, String direccion, String rankinDeEmergencias, int capaAmbulancias, int capaParamedicos) {
+    public ComplejosH(String nombre, String direccion, Ranking rankinDeEmergencias, int capaAmbulancias, int capaParamedicos) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.rankinDeEmergencias = rankinDeEmergencias;
@@ -37,27 +38,11 @@ public class ComplejosH implements Serializable{
         this.direccion = direccion;
     }
 
-    public String getRankinDeEmergencias() {
+    public Ranking getRankinDeEmergencias() {
         return rankinDeEmergencias;
     }
 
-    public ArrayList getAmbulancias() {
-        return Ambulancias;
-    }
-
-    public void setAmbulancias(ArrayList Ambulancias) {
-        this.Ambulancias = Ambulancias;
-    }
-
-    public ArrayList getParamedicos() {
-        return Paramedicos;
-    }
-
-    public void setParamedicos(ArrayList Paramedicos) {
-        this.Paramedicos = Paramedicos;
-    }
-
-    public void setRankinDeEmergencias(String rankinDeEmergencias) {
+    public void setRankinDeEmergencias(Ranking rankinDeEmergencias) {
         this.rankinDeEmergencias = rankinDeEmergencias;
     }
 
@@ -75,6 +60,22 @@ public class ComplejosH implements Serializable{
 
     public void setCapaParamedicos(int capaParamedicos) {
         this.capaParamedicos = capaParamedicos;
+    }
+
+    public ArrayList getAmbulancias() {
+        return Ambulancias;
+    }
+
+    public void setAmbulancias(ArrayList Ambulancias) {
+        this.Ambulancias = Ambulancias;
+    }
+
+    public ArrayList getParamedicos() {
+        return Paramedicos;
+    }
+
+    public void setParamedicos(ArrayList Paramedicos) {
+        this.Paramedicos = Paramedicos;
     }
 
     @Override

@@ -1,11 +1,12 @@
 
 import java.util.ArrayList;
+import scala.Serializable;
 
 /**
  *
  * @author Dennis
  */
-public class ComplejosH {
+public class ComplejosH implements Serializable{
 
     //capa=capacidad
     String nombre, direccion, rankinDeEmergencias;

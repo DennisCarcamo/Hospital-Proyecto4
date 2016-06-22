@@ -1,9 +1,12 @@
 
+import scala.Serializable;
+
+
 /**
  *
  * @author Dennis
  */
-public class Emergencia {
+public class Emergencia implements Serializable {
 
     String Lugar, Ranking;
 

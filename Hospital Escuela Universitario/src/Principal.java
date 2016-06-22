@@ -1,10 +1,29 @@
 
+import java.awt.Component;
 import java.awt.Dialog;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import org.graphstream.graph.Edge;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.Node;
+import org.graphstream.graph.implementations.MultiGraph;
+import org.graphstream.ui.view.View;
+import org.graphstream.ui.view.Viewer;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,13 +36,23 @@ import javax.swing.table.TableModel;
  */
 public class Principal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Principal
-     */
+    Graph graph = new MultiGraph("Graffo");
+
     public Principal() {
         initComponents();
+        ComplejosH = new ArrayList();
+        Ambulancia = new ArrayList();
+        Paramedico = new ArrayList();
+        Domiciliolist = new ArrayList();
+        cargar();
         this.pack();
         this.setLocationRelativeTo(this);
+        jd_MAPAONLY.setVisible(true);
+
+        Viewer viewer = graph.display(true);
+        View view = viewer.getDefaultView();
+        this.jd_MAPAONLY.add((Component) view);
+        this.repaint();
     }
 
     /**
@@ -82,7 +111,6 @@ public class Principal extends javax.swing.JFrame {
         cb_LugarOrigen = new javax.swing.JComboBox<>();
         jLabel21 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
-        jLabel20 = new javax.swing.JLabel();
         jp_opciones = new javax.swing.JFrame();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -124,7 +152,35 @@ public class Principal extends javax.swing.JFrame {
         cb_complejoactualtranferirambulancia = new javax.swing.JComboBox<>();
         Mapa = new javax.swing.JDialog();
         jLabel33 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        jButton19 = new javax.swing.JButton();
+        jButton20 = new javax.swing.JButton();
+        jButton21 = new javax.swing.JButton();
+        jButton22 = new javax.swing.JButton();
+        jd_MAPAONLY = new javax.swing.JPanel();
+        jd_AgregarCentroalmapa = new javax.swing.JDialog();
+        cb_Agregarcomplejoalmapa = new javax.swing.JComboBox<>();
+        jButton23 = new javax.swing.JButton();
+        jd_crearconexion = new javax.swing.JDialog();
+        cb_conectarorigen = new javax.swing.JComboBox<>();
+        cb_coectarfinal = new javax.swing.JComboBox<>();
+        jButton24 = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        tf_ditancia = new javax.swing.JTextField();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        bt_domicilio = new javax.swing.JRadioButton();
+        bt_hospital = new javax.swing.JRadioButton();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jd_AgregarArea = new javax.swing.JDialog();
+        jButton25 = new javax.swing.JButton();
+        jLabel34 = new javax.swing.JLabel();
+        tf_nombreArea = new javax.swing.JTextField();
+        jLabel37 = new javax.swing.JLabel();
+        tf_nombreDireeccion = new javax.swing.JTextField();
+        jd_ingresaremergencias = new javax.swing.JDialog();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
@@ -409,9 +465,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addGroup(jp_EmergencniaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel18)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_EmergencniaLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel19)))
+                            .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jp_EmergencniaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cb_ranquingEmergencia, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -438,8 +492,6 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jButton8)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
-
-        jLabel20.setText("jLabel20");
 
         jButton1.setText("Crear Complejo");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -822,40 +874,270 @@ public class Principal extends javax.swing.JFrame {
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel33.setText("MAPA");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        jButton19.setText("Crear Conexion");
+        jButton19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton19MouseClicked(evt);
+            }
+        });
+
+        jButton20.setText("Agregar Area");
+        jButton20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton20MouseClicked(evt);
+            }
+        });
+
+        jButton21.setText("Ingresar Emergencia");
+
+        jButton22.setText("Agregar Centro hopsitalario");
+        jButton22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton22MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_MAPAONLYLayout = new javax.swing.GroupLayout(jd_MAPAONLY);
+        jd_MAPAONLY.setLayout(jd_MAPAONLYLayout);
+        jd_MAPAONLYLayout.setHorizontalGroup(
+            jd_MAPAONLYLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 811, Short.MAX_VALUE)
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 347, Short.MAX_VALUE)
+        jd_MAPAONLYLayout.setVerticalGroup(
+            jd_MAPAONLYLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout MapaLayout = new javax.swing.GroupLayout(Mapa.getContentPane());
         Mapa.getContentPane().setLayout(MapaLayout);
         MapaLayout.setHorizontalGroup(
             MapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
             .addGroup(MapaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(21, 21, 21))
+                .addComponent(jd_MAPAONLY, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(MapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton22))
+                .addGap(45, 45, 45))
+            .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         MapaLayout.setVerticalGroup(
             MapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MapaLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel33)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(MapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MapaLayout.createSequentialGroup()
+                        .addComponent(jButton22)
+                        .addGap(27, 27, 27)
+                        .addComponent(jButton19)
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton20)
+                        .addGap(28, 28, 28)
+                        .addComponent(jButton21)
+                        .addGap(0, 375, Short.MAX_VALUE))
+                    .addComponent(jd_MAPAONLY, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+        );
+
+        jButton23.setText("Aceptar");
+        jButton23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton23MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_AgregarCentroalmapaLayout = new javax.swing.GroupLayout(jd_AgregarCentroalmapa.getContentPane());
+        jd_AgregarCentroalmapa.getContentPane().setLayout(jd_AgregarCentroalmapaLayout);
+        jd_AgregarCentroalmapaLayout.setHorizontalGroup(
+            jd_AgregarCentroalmapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_AgregarCentroalmapaLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jd_AgregarCentroalmapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cb_Agregarcomplejoalmapa, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jd_AgregarCentroalmapaLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton23)))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+        jd_AgregarCentroalmapaLayout.setVerticalGroup(
+            jd_AgregarCentroalmapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_AgregarCentroalmapaLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(cb_Agregarcomplejoalmapa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton23)
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+
+        jButton24.setText("Conectar");
+        jButton24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton24MouseClicked(evt);
+            }
+        });
+
+        jLabel20.setText("a");
+
+        jLabel35.setText("Km");
+
+        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel36.setText("Distancia");
+
+        buttonGroup1.add(bt_domicilio);
+        bt_domicilio.setText("Domicilios");
+
+        buttonGroup1.add(bt_hospital);
+        bt_hospital.setText("Hospital");
+
+        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel38.setText("Origen");
+
+        jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel39.setText("Destino");
+
+        jLabel40.setText("Coneccion");
+
+        javax.swing.GroupLayout jd_crearconexionLayout = new javax.swing.GroupLayout(jd_crearconexion.getContentPane());
+        jd_crearconexion.getContentPane().setLayout(jd_crearconexionLayout);
+        jd_crearconexionLayout.setHorizontalGroup(
+            jd_crearconexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_crearconexionLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cb_conectarorigen, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel20)
+                .addGroup(jd_crearconexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_crearconexionLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(bt_domicilio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bt_hospital))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_crearconexionLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jd_crearconexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jd_crearconexionLayout.createSequentialGroup()
+                                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tf_ditancia, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_crearconexionLayout.createSequentialGroup()
+                                .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(9, 9, 9)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cb_coectarfinal, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
+            .addGroup(jd_crearconexionLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
+            .addGroup(jd_crearconexionLayout.createSequentialGroup()
+                .addGap(224, 224, 224)
+                .addComponent(jLabel40)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jd_crearconexionLayout.setVerticalGroup(
+            jd_crearconexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_crearconexionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel40)
+                .addGap(32, 32, 32)
+                .addGroup(jd_crearconexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel38)
+                    .addComponent(jLabel39))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jd_crearconexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_crearconexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cb_conectarorigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel20))
+                    .addGroup(jd_crearconexionLayout.createSequentialGroup()
+                        .addGroup(jd_crearconexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bt_domicilio)
+                            .addComponent(cb_coectarfinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bt_hospital))
+                        .addGap(8, 8, 8)
+                        .addGroup(jd_crearconexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel35)
+                            .addComponent(tf_ditancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel36))))
+                .addGap(18, 28, Short.MAX_VALUE)
+                .addComponent(jButton24)
+                .addContainerGap())
+        );
+
+        jButton25.setText("Aceptar");
+        jButton25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton25MouseClicked(evt);
+            }
+        });
+
+        jLabel34.setText("Nombre");
+
+        jLabel37.setText("Direccion");
+
+        javax.swing.GroupLayout jd_AgregarAreaLayout = new javax.swing.GroupLayout(jd_AgregarArea.getContentPane());
+        jd_AgregarArea.getContentPane().setLayout(jd_AgregarAreaLayout);
+        jd_AgregarAreaLayout.setHorizontalGroup(
+            jd_AgregarAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_AgregarAreaLayout.createSequentialGroup()
+                .addGroup(jd_AgregarAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_AgregarAreaLayout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jButton25))
+                    .addGroup(jd_AgregarAreaLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jd_AgregarAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel37)
+                            .addComponent(jLabel34))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jd_AgregarAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tf_nombreArea, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_nombreDireeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+        jd_AgregarAreaLayout.setVerticalGroup(
+            jd_AgregarAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_AgregarAreaLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jd_AgregarAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_nombreArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel34))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_AgregarAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_nombreDireeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel37))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(jButton25)
+                .addGap(15, 15, 15))
+        );
+
+        javax.swing.GroupLayout jd_ingresaremergenciasLayout = new javax.swing.GroupLayout(jd_ingresaremergencias.getContentPane());
+        jd_ingresaremergencias.getContentPane().setLayout(jd_ingresaremergenciasLayout);
+        jd_ingresaremergenciasLayout.setHorizontalGroup(
+            jd_ingresaremergenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jd_ingresaremergenciasLayout.setVerticalGroup(
+            jd_ingresaremergenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton9.setText("Mapa");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
 
         jButton10.setText("Opciones");
         jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -965,18 +1247,18 @@ public class Principal extends javax.swing.JFrame {
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         int placa, year, VelociMaxima;
         ComplejosH complejohAsignado;
-        //  try {
-        placa = Integer.parseInt(this.tf_PlacaAmbulance.getText());
-        year = Integer.parseInt(this.tf_AnoAmbulancia.getText());
-        VelociMaxima = Integer.parseInt(this.tf_VelociMaxi.getText());
-        complejohAsignado = (ComplejosH) this.cb_AsignaraAmbulkance.getSelectedItem();
-        Ambulancia nuevaAmbulancia = new Ambulancia(placa, year, VelociMaxima, complejohAsignado);
-        ((ComplejosH) ComplejosH.get(this.cb_AsignaraAmbulkance.getSelectedIndex())).getAmbulancias().add(nuevaAmbulancia);
-        JOptionPane.showMessageDialog(this.jp_Complejo, "Ambulancia Agregado Exiosamente");
-        this.limpiarAmbulacias();
-        /* } catch (Exception e) {
+        try {
+            placa = Integer.parseInt(this.tf_PlacaAmbulance.getText());
+            year = Integer.parseInt(this.tf_AnoAmbulancia.getText());
+            VelociMaxima = Integer.parseInt(this.tf_VelociMaxi.getText());
+            complejohAsignado = (ComplejosH) this.cb_AsignaraAmbulkance.getSelectedItem();
+            Ambulancia nuevaAmbulancia = new Ambulancia(placa, year, VelociMaxima, complejohAsignado);
+            ((ComplejosH) ComplejosH.get(this.cb_AsignaraAmbulkance.getSelectedIndex())).getAmbulancias().add(nuevaAmbulancia);
+            JOptionPane.showMessageDialog(this.jp_Complejo, "Ambulancia Agregado Exiosamente");
+            this.limpiarAmbulacias();
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this.jp_Ambulancia, "Algo Salio Mal, Verifique sus Datos", "ERROR", JOptionPane.WARNING_MESSAGE);
-        }*/
+        }
     }//GEN-LAST:event_jButton6MouseClicked
 
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
@@ -1076,9 +1358,25 @@ public class Principal extends javax.swing.JFrame {
         this.cb_complejoatranferirAmbula.setModel(modelo);
     }
     private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
+        try {
+            boolean esta = false;
+            String evaluarnombre = cb_eliminarcomplejo.getSelectedItem().toString();
+            for (int i = 0; i < ComplejosH.size(); i++) {
+                if (ComplejosH.get(i).toString().equals(evaluarnombre)) {
+                    esta = true;
+                }
+            }
+
+            if (esta) {
+                graph.removeNode(evaluarnombre);
+            }
+        } catch (Exception e) {
+
+        }
         ComplejosH.remove(this.cb_eliminarcomplejo.getSelectedIndex());
         actualizarcomboboxeliminarcomplejo();
         JOptionPane.showMessageDialog(this, "Complejo Eliminado Exitosamente");
+
     }//GEN-LAST:event_jButton15MouseClicked
 
     private void cb_complejoactualtranferirparamedicoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_complejoactualtranferirparamedicoItemStateChanged
@@ -1153,6 +1451,141 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton17MouseClicked
 
+    private void jButton22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton22MouseClicked
+        this.jd_AgregarCentroalmapa.pack();
+        actaulizarcomboagregaralmapa();
+        this.jd_AgregarCentroalmapa.setLocationRelativeTo(jButton22);
+        this.jd_AgregarCentroalmapa.setVisible(true);
+    }//GEN-LAST:event_jButton22MouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        this.Mapa.pack();
+        this.Mapa.setLocationRelativeTo(this);
+        this.Mapa.setVisible(true);
+        guardar();
+    }//GEN-LAST:event_jButton9MouseClicked
+
+    private void cargar() {
+
+        try {
+            File archivo = null;
+            try {
+                archivo = new File("./Binary.dat");
+                FileInputStream fo = new FileInputStream(archivo);
+                ObjectInputStream oo = new ObjectInputStream(fo);
+                objeto = (ObjetoGuardar) oo.readObject();
+
+                for (int i = 0; i < objeto.complejos.size(); i++) {
+                    ComplejosH.add(objeto.complejos.get(i));
+                }
+
+                for (int i = 0; i < objeto.Paramedicos.size(); i++) {
+                    Paramedico.add(objeto.Paramedicos.get(i));
+                }
+
+                for (int i = 0; i < objeto.ambulancias.size(); i++) {
+                    Ambulancia.add(objeto.ambulancias.get(i));
+                }
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Archivo no se encontro");
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "no se cargo el archivo");
+        }
+
+    }
+
+    private void guardar() {
+        objeto = new ObjetoGuardar();
+        objeto.llenarcomplejos(ComplejosH);
+        objeto.llenarParamedicos(Paramedico);
+        objeto.llenarambulancias(Ambulancia);
+        //objeto.llenarEmergencias(Emergencias);
+        try {
+            File archivo = null;
+            try {
+                archivo = new File("./Binary.dat");
+                FileOutputStream fo = new FileOutputStream(archivo);
+                ObjectOutputStream oo = new ObjectOutputStream(fo);
+                oo.writeObject(objeto);
+                oo.close();
+                fo.close();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "no se guardó correctamente");
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "no se guardó correctamente");
+        }
+
+    }
+
+    private void jButton19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton19MouseClicked
+        this.bt_domicilio.setSelected(true);
+        this.jd_crearconexion.pack();
+        actualizarcomboboxedje1();
+        actualizarcomboboxedje2();
+        this.jd_crearconexion.setLocationRelativeTo(jButton19);
+        this.jd_crearconexion.setVisible(true);
+    }//GEN-LAST:event_jButton19MouseClicked
+    private void actualizarcomboboxedje1() {
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < ComplejosH.size(); i++) {
+            modelo.addElement((ComplejosH) ComplejosH.get(i));
+        }
+        this.cb_conectarorigen.setModel(modelo);
+    }
+
+    private void actualizarcomboboxedje2() {
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < ComplejosH.size(); i++) {
+            modelo.addElement((ComplejosH) ComplejosH.get(i));
+        }
+        this.cb_coectarfinal.setModel(modelo);
+    }
+    private void jButton20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton20MouseClicked
+        this.jd_AgregarArea.pack();
+        this.jd_AgregarArea.setLocationRelativeTo(jButton20);
+        this.jd_AgregarArea.setVisible(true);
+    }//GEN-LAST:event_jButton20MouseClicked
+
+    private void jButton23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton23MouseClicked
+        ComplejosH selected = (ComplejosH) this.cb_Agregarcomplejoalmapa.getSelectedItem();
+        Node n = graph.addNode(selected.toString());
+        n.addAttribute("ui.label", selected.toString());
+
+    }//GEN-LAST:event_jButton23MouseClicked
+
+    private void jButton24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton24MouseClicked
+        Object init = this.cb_conectarorigen.getSelectedItem();
+        Object end = this.cb_coectarfinal.getSelectedItem();
+        String distancia = this.tf_ditancia.getText();
+        Edge edge = graph.addEdge(init.toString() + "-" + end.toString(), init.toString(), end.toString());
+        edge.addAttribute("ui.label", distancia + " km");
+        this.tf_ditancia.setText("");
+
+
+    }//GEN-LAST:event_jButton24MouseClicked
+
+    private void jButton25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton25MouseClicked
+        String nombre, direccion;
+        nombre = this.tf_nombreArea.getText();
+        direccion = this.tf_nombreDireeccion.getText();
+        Domicilio domicilio = new Domicilio(nombre, direccion);
+        Domiciliolist.add(domicilio);
+        Node n = graph.addNode(domicilio.toString());
+        n.addAttribute("ui.label", n.toString());
+    }//GEN-LAST:event_jButton25MouseClicked
+    private void actaulizarcomboagregaralmapa() {
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < ComplejosH.size(); i++) {
+            modelo.addElement((ComplejosH) ComplejosH.get(i));
+        }
+        cb_Agregarcomplejoalmapa.setModel(modelo);
+    }
+
     public void limpiarEmergencia() {
         this.cb_LugarOrigen.setSelectedIndex(-1);
         this.cb_ranquingEmergencia.setSelectedIndex(-1);
@@ -1195,16 +1628,24 @@ public class Principal extends javax.swing.JFrame {
                 if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Principal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Principal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Principal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Principal.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -1218,15 +1659,21 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog Mapa;
+    private javax.swing.JRadioButton bt_domicilio;
+    private javax.swing.JRadioButton bt_hospital;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cb_Agregarcomplejoalmapa;
     private javax.swing.JComboBox<String> cb_AsignaraAmbulkance;
     private javax.swing.JComboBox<String> cb_AsignaraParamedico;
     private javax.swing.JComboBox<String> cb_LugarOrigen;
     private javax.swing.JComboBox<String> cb_RankingHospitalario;
     private javax.swing.JComboBox<String> cb_RankingPAramedico;
+    private javax.swing.JComboBox<String> cb_coectarfinal;
     private javax.swing.JComboBox<String> cb_complejoactualtranferirambulancia;
     private javax.swing.JComboBox<String> cb_complejoactualtranferirparamedico;
     private javax.swing.JComboBox<String> cb_complejoatranferir;
     private javax.swing.JComboBox<String> cb_complejoatranferirAmbula;
+    private javax.swing.JComboBox<String> cb_conectarorigen;
     private javax.swing.JComboBox<String> cb_eliminarcomplejo;
     private javax.swing.JComboBox<String> cb_ranquingEmergencia;
     private javax.swing.JButton jButton1;
@@ -1239,7 +1686,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton21;
+    private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1274,7 +1728,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1283,14 +1744,18 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JDialog jd_AgregarArea;
+    private javax.swing.JDialog jd_AgregarCentroalmapa;
+    private javax.swing.JPanel jd_MAPAONLY;
+    private javax.swing.JDialog jd_crearconexion;
     private javax.swing.JDialog jd_eliminarcomplejo;
+    private javax.swing.JDialog jd_ingresaremergencias;
     private javax.swing.JDialog jd_reasignarAmbulancia;
     private javax.swing.JDialog jd_transferirParamedico;
     private javax.swing.JFrame jp_Ambulancia;
@@ -1307,12 +1772,17 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_IdParamedico;
     private javax.swing.JTextField tf_PlacaAmbulance;
     private javax.swing.JTextField tf_VelociMaxi;
+    private javax.swing.JTextField tf_ditancia;
     private javax.swing.JTextField tf_edadParamedico;
+    private javax.swing.JTextField tf_nombreArea;
+    private javax.swing.JTextField tf_nombreDireeccion;
     private javax.swing.JTextField tf_nombreHopsitalario;
     private javax.swing.JTextField tf_nombreParamedico;
     // End of variables declaration//GEN-END:variables
-    ArrayList ComplejosH = new ArrayList();
-    ArrayList Ambulancia = new ArrayList();
-    ArrayList Paramedico = new ArrayList();
+ ArrayList ComplejosH;
+    ArrayList Ambulancia;
+    ArrayList Paramedico;
+    ArrayList<Domicilio> Domiciliolist;
 
+    ObjetoGuardar objeto;
 }

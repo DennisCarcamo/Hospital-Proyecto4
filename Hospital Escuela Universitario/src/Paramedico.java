@@ -1,9 +1,12 @@
 
+import scala.Serializable;
+
+
 /**
  *
  * @author Dennis
  */
-public class Paramedico {
+public class Paramedico implements Serializable {
 
     String nombre, ranking;
     int ID, edad;

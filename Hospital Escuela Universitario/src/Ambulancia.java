@@ -1,9 +1,11 @@
 
+import scala.Serializable;
+
 /**
  *
  * @author Dennis
  */
-public class Ambulancia {
+public class Ambulancia implements Serializable {
 
     int placa, year, VelociMaxima;
     ComplejosH complejohAsignado;

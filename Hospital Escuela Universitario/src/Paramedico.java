@@ -5,14 +5,14 @@ import scala.Serializable;
  *
  * @author Dennis
  */
-public class Paramedico implements Serializable {
+public class Paramedico implements Serializable, Comparable<Paramedico> {
 
     String nombre;
-    Ranking ranking;
+    comparable ranking;
     int ID, edad;
     ComplejosH asignado;
 
-    public Paramedico(String nombre, Ranking ranking, int ID, int edad, ComplejosH asignado) {
+    public Paramedico(String nombre, comparable ranking, int ID, int edad, ComplejosH asignado) {
         this.nombre = nombre;
         this.ranking = ranking;
         this.ID = ID;
@@ -28,11 +28,11 @@ public class Paramedico implements Serializable {
         this.nombre = nombre;
     }
 
-    public Ranking getRanking() {
+    public comparable getRanking() {
         return ranking;
     }
 
-    public void setRanking(Ranking ranking) {
+    public void setRanking(comparable ranking) {
         this.ranking = ranking;
     }
 
@@ -63,6 +63,11 @@ public class Paramedico implements Serializable {
     @Override
     public String toString() {
         return "Paramedico{" + "nombre=" + nombre + '}';
+    }
+
+    @Override
+    public int compareTo(Paramedico t) {
+        return ranking.compareTo(t.ranking);
     }
 
 }

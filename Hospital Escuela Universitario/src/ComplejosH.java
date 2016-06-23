@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.PriorityQueue;
 import scala.Serializable;
 
 /**
@@ -12,13 +13,15 @@ public class ComplejosH implements Serializable {
     Ranking rankinDeEmergencias;
     int capaAmbulancias, capaParamedicos;
     ArrayList Ambulancias = new ArrayList(), Paramedicos = new ArrayList();
+    private PriorityQueue<Paramedico> personal;
 
-    public ComplejosH(String nombre, String direccion, Ranking rankinDeEmergencias, int capaAmbulancias, int capaParamedicos) {
+    public ComplejosH(String nombre, String direccion, Ranking rankinDeEmergencias, int capaAmbulancias, int capaParamedicos, PriorityQueue<Paramedico> personal) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.rankinDeEmergencias = rankinDeEmergencias;
         this.capaAmbulancias = capaAmbulancias;
         this.capaParamedicos = capaParamedicos;
+        this.personal = personal;
     }
 
     public String getNombre() {
@@ -69,12 +72,12 @@ public class ComplejosH implements Serializable {
         this.Ambulancias = Ambulancias;
     }
 
-    public ArrayList getParamedicos() {
-        return Paramedicos;
+    public PriorityQueue<Paramedico> getPersonal() {
+        return personal;
     }
 
-    public void setParamedicos(ArrayList Paramedicos) {
-        this.Paramedicos = Paramedicos;
+    public void setPersonal(PriorityQueue<Paramedico> personal) {
+        this.personal = personal;
     }
 
     @Override
